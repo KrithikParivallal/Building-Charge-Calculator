@@ -1,0 +1,94 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    background-color: #041421; /* Dark base background */
+    color: #d0d6d6; /* Light text color for contrast */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Container for the form */
+.container {
+    background: #042630; /* Darker container background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    width: 90%;
+    max-width: 600px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 20px; /* Space from top */
+}
+
+/* Title styling */
+h1 {
+    font-size: 2.5em;
+    color: #86b9b0; /* Light teal color for title */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form elements */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for labels */
+label {
+    margin: 12px 0 6px;
+    font-size: 1.1em;
+    color: #4c7273; /* Muted greenish color for labels */
+}
+
+/* Styling for input fields, selects, and button */
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 18px;
+    border: 1px solid #4c7273; /* Border color that matches the label */
+    border-radius: 5px;
+    background-color: #041421; /* Dark background for inputs */
+    color: #d0d6d6; /* Light text color */
+}
+
+/* Button Styling */
+button {
+    background: #86b9b0; /* Soft teal for buttons */
+    color: #041421; /* Dark text on the button for contrast */
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #4c7273; /* Slightly darker teal on hover */
+}
+
+/* Results Section */
+h2 {
+    text-align: center;
+    color: #86b9b0; /* Soft teal for section titles */
+    margin-top: 40px;
+}
+
+p {
+    font-size: 1.2em;
+    margin: 5px 0;
+    text-align: center;
+    color: #d0d6d6; /* Light text color for result details */
+}
+
+/* Add some spacing and a border for results to make them stand out */
+.results {
+    background-color: #042630; /* Dark background for results */
+    border: 1px solid #4c7273; /* Matching border */
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}

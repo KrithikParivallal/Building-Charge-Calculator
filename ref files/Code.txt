@@ -1,0 +1,98 @@
+#Inputs
+LocalBody = int(input("Enter Local body (1-CM, 2-TP,3- VP): "))
+Usage = int(input("Enter Usage (1-R, 2-C, 3-Ind, 4-Ins): "))
+isHRise = int(input("Is the building HighRise? (1-Yes, 2-No): "))
+MSB = int(input("Enter 1 - OMSB, 2 - MSBR, 3 - MSB: "))
+SiteArea = float(input("Enter Site area(sqm): "))
+BuiltArea = float(input("Enter built area(sqm): "))
+FSI = float(input("Enter FSI: "))
+GV = float(input("Enter GV: "))
+
+## Calcs
+
+#ScrutinyFee
+ScrutinyFee = (BuiltArea*2) #in Rs
+
+#I&A Charges
+if MSB == 1:
+    IACharges = FSI*285
+elif MSB == 2:
+    IACharges = FSI*375
+else:
+    IACharges = FSI*563
+    
+#SecurityDeposit
+SD = IACharges/2
+    
+#ShelterFund:
+if Usage == 1 or Usage == 3:
+    ShelterFund = ((FSI-3000)*GV)*0.011
+elif Usage == 2:
+    ShelterFund = ((FSI-3000)*GV)*0.012
+else:
+    ShelterFund = ((FSI-3000)*GV)*0.01
+    
+#PremiumFSI FSI/SiteArea>2:(FSI-2*SA)*GV*0.5
+if isHRise == 1:
+    if(FSI/SiteArea > 3.25):
+        PFSI = (((FSI-(2*SiteArea))*GV)*0.5)
+    else:
+        PFSI = 0
+else:
+    if(FSI/SiteArea > 2):
+        PFSI = (((FSI-(2*SiteArea))*GV)*0.5)
+    else:
+        PFSI = 0
+
+#OSR - SiteArea*0.1*GV:
+OSR = (SiteArea*0.1)*GV
+
+#DevCharge:
+if LocalBody == 1:
+    if Usage == 1:
+        DevChargeL = (SiteArea*4)
+        DevChargeB = (BuiltArea*20)
+    elif Usage == 2:
+        DevChargeL = (SiteArea*8)
+        DevChargeB = (BuiltArea*40)
+    elif Usage == 3:
+        DevChargeL = (SiteArea*6)
+        DevChargeB = (BuiltArea*30)
+elif LocalBody == 2:
+    if Usage == 1:
+        DevChargeL = (SiteArea*2)
+        DevChargeB = (BuiltArea*10)
+    elif Usage == 2:
+        DevChargeL = (SiteArea*4)
+        DevChargeB = (BuiltArea*20)
+    elif Usage == 3:
+        DevChargeL = (SiteArea*3)
+        DevChargeB = (BuiltArea*15)
+        DevCharge = (SiteArea*3+(BuiltArea*15))
+else:
+    if Usage == 1:
+        DevChargeL = (SiteArea*1.20)
+        DevChargeB = (BuiltArea*5)
+    elif Usage == 2:
+        DevChargeL = (SiteArea*2.40)
+        DevChargeB = (BuiltArea*10)
+    elif Usage == 3:
+        DevChargeL = (SiteArea*1.8)
+        DevChargeB = (BuiltArea*7.5)
+        
+#CC Charge
+CC = BuiltArea*10.764
+
+#Display Results
+print("ScrutinyFee: ", ScrutinyFee)
+print("I&A Charges: ", IACharges)
+print("SecurityDeposit: ", SD)
+print("ShelterFund: ", ShelterFund)
+print("Premium FSI: ", PFSI)
+print("OSR: ", OSR)
+print("Development Charges Land: ", DevChargeL)
+print("Development Charges Building: ", DevChargeB)
+print("CC Charge: ", CC)
+    
+
+
